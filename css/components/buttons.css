@@ -1,0 +1,61 @@
+/* ==========================================================================
+   CONTROLES INFERIORES (Botones de acción del Hub)
+   ========================================================================== */
+
+:root {
+  /* TempoGym: Energía, Fitness, Moderno (Azul eléctrico a Púrpura) */
+  --tempogym-gradient-btn: linear-gradient(135deg, #0052d4 0%, #4364f7 50%, #6fb1fc 100%);
+  
+  /* Basic Tools: Terminal, SysAdmin, Elegante (Gris carbón) */
+  --tools-bg-btn: #212529;
+  --tools-border-glow: #20c997; /* Toque verde/turquesa de código */
+}
+
+/* Contenedor con ligero margen lateral para pantallas móviles */
+.action-buttons {
+  padding: 0 10px;
+}
+
+/* Reseteo general de botones - Transiciones suaves para el hover */
+.btn {
+  border-radius: 12px; /* Un poco menos redondo, más aspecto de App profesional */
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  transition: all 0.3s ease; /* Hace que el brillo y el tamaño cambien suavemente */
+}
+
+/* Botón TempoGym (El Protagonista) */
+.btn-primary {
+  background: var(--tempogym-gradient-btn) !important;
+  color: #ffffff !important; /* Texto blanco puro para contraste perfecto */
+  border: none !important;
+  /* Una sombra azulada que actúa como resplandor (Glow) en fondos oscuros */
+  box-shadow: 0 4px 15px rgba(67, 100, 247, 0.4) !important; 
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(67, 100, 247, 0.6) !important;
+  transform: translateY(-2px); /* Se levanta un poquito al pasar el ratón */
+}
+
+/* Botón Basic Tools (El Secundario / Herramienta) */
+.btn-secondary {
+  background: var(--tools-bg-btn) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Al pasar el ratón, se ilumina con el color "Tech" */
+.btn-secondary:hover {
+  border: 1px solid var(--tools-border-glow) !important;
+  box-shadow: 0 0 15px rgba(32, 201, 151, 0.2) !important;
+  transform: translateY(-2px);
+}
+
+/* Animación háptica visual al pulsar CUALQUIER botón */
+.btn:active {
+  transform: scale(0.96) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
+}
