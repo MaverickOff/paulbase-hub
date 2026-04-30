@@ -8,6 +8,7 @@
 
 /* 2. Componentes de UI */
 @import url("components/buttons.css");
+@import url("components/cards.css");
 
 /* 3. Efecto del header */
 @import url("components/header.css");

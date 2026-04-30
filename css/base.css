@@ -26,9 +26,6 @@ body, html {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--bg-color) !important;
     color: var(--text-main);
-    
-    /* Hack vital para móviles: Evita el efecto rebote al deslizar hacia arriba/abajo */
-    overscroll-behavior-y: none; 
 }
 
 /* Utilidad global: Barra superior de navegación */
