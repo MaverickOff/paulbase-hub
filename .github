@@ -1,39 +1,39 @@
-name: Deploy to AWS S3
+name: Deploy to AWS S3 (Vite Build)
 
 on:
   push:
     branches:
-      - main # Se ejecuta cuando hay cambios en la rama main
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Clonar el repositorio
-      - name: Checkout código
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4 # Actualizado a v4 para evitar advertencias
 
-      # 2. Instalar Node.js
+      # NUEVO PASO 1: Instalar el motor de JavaScript
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20' # Usamos la versión moderna y estable
 
-      # 3. Instalar dependencias y Minificar (crear la carpeta dist/)
-      - name: Instalar y Compilar
-        run: |
-          npm install
-          npm run build
+      # NUEVO PASO 2: Descargar las dependencias (Vite)
+      - name: Install dependencies
+        run: npm ci
 
-      # 4. Configurar credenciales de AWS
-      - name: Configurar AWS
-        uses: aws-actions/configure-aws-credentials@v2
+      # NUEVO PASO 3: Encender la licuadora (Crea la carpeta dist/)
+      - name: Build project
+        run: npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4 # Actualizado a v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1 # Cambia esto por tu región de AWS
+          aws-region: us-east-1
 
-      # 5. Subir la carpeta dist/ al Bucket de S3
-      - name: Subir a S3
-        run: aws s3 sync ./dist s3://paulbase.cloud --delete
+      # CORRECCIÓN: Sincronizar SOLO la carpeta dist/ (no el punto ".")
+      - name: Sync files to S3
+        run: aws s3 sync dist/ s3://paulbase.cloud --delete
+  
