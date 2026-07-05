@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview"
-},
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MaverickOff/paulbase-hub.git"
@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/MaverickOff/paulbase-hub#readme",
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.0.1",
     "vite": "^8.0.10"
   }
 }
